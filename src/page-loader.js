@@ -1,21 +1,28 @@
+import process from 'node:process';
 import axios from 'axios';
+import path from 'node:path';
+import { writeFile } from 'node:fs/promises';
+
+const convertUrlToFileName = (urlSource) => {
+  const url = new URL(urlSource);
+  const urlString = `${url.hostname}${url.pathname}`;
+  const fileName = urlString.replace(/\W/g, '-');
+
+  return `${fileName}.html`;
+};
 
 export default (url, outputDir) => {
-  console.log(`call page-loader module with parameters: ${url}, ${outputDir}`);
+  const fileName = convertUrlToFileName(url);
+  const pathName = outputDir ?? process.cwd();
+  const filePath = path.join(pathName, fileName);
 
   axios.get(url)
     .then((response) => {
-      // handle success
-      console.log(response);
+      writeFile(filePath, response.data);
     })
     .catch((error) => {
-      // handle error
       console.log(error);
-    })
-    .finally(() => {
-      // always executed
-      console.log('finally block');
     });
 
-  return outputDir;
+  return filePath;
 };
