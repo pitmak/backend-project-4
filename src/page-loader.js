@@ -16,13 +16,9 @@ export default (url, outputDir) => {
   const pathName = outputDir ?? process.cwd();
   const filePath = path.join(pathName, fileName);
 
-  axios.get(url)
+  return axios.get(url)
     .then((response) => {
       writeFile(filePath, response.data);
     })
-    .catch((error) => {
-      console.log(error);
-    });
-
-  return filePath;
+    .then(() => filePath);
 };
