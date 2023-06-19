@@ -19,6 +19,8 @@ const PATH = '/courses';
 const STUB_TEXT = 'Hello from nock';
 // const EXPECTED_FILE_NAME = 'ru-hexlet-io-courses.html';
 
+const normalize = (str) => str.replace(/\s/g, '');
+
 nock(HOST)
   .persist()
   .get(PATH)
