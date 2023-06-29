@@ -22,6 +22,15 @@ const convertSrcToFileName = (urlSource) => {
   return `${fileName}${parsed.ext}`;
 };
 
+/**
+ * Download data from the specified URL.
+ *
+ * @async
+ * @function pageLoader
+ * @param {string} url - The URL to download from.
+ * @param {string} outputDir - The URL to download from.
+ * @return {Promise<string>} - Full path/name of downloaded html file.
+ */
 export default (url, outputDir = '.') => {
   // console.log('process.cwd: ', process.cwd());
   // console.log('path.resolve: ', path.resolve(outputDir));

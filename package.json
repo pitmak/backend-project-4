@@ -3,7 +3,6 @@
     "version": "1.0.0",
     "description": "[![Actions Status](https://github.com/pitmak/backend-project-4/workflows/hexlet-check/badge.svg)](https://github.com/pitmak/backend-project-4/actions)",
     "main": "index.js",
-    "type": "module",
     "scripts": {
         "test": "jest"
     },
